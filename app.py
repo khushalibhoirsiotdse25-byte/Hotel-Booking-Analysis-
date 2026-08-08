@@ -188,20 +188,48 @@ hotel_data = (
     .reset_index()
 )
 
-hotel_data.columns = [
-    "Hotel",
+cancellation_data = (
+    filtered_df["is_canceled"]
+    .value_counts()
+    .reset_index()
+)
+
+cancellation_data.columns = [
+    "Status",
     "Bookings"
 ]
 
+cancellation_data["Status"] = cancellation_data["Status"].map({
+    0: "Not Cancelled",
+    1: "Cancelled"
+})
+
 fig2 = px.pie(
-    hotel_data,
-    names="Hotel",
+    cancellation_data,
+    names="Status",
     values="Bookings",
-    title="Hotel Booking Distribution",
-    color_discrete_sequence=[
-        "#636EFA",
-        "#EF553B"
-    ]
+    title="Booking Cancellation Distribution",
+    color="Status",
+    color_discrete_map={
+        "Not Cancelled": "#00CC96",
+        "Cancelled": "#EF553B"
+    }
+)
+
+fig2.update_traces(
+    textinfo="percent+label",
+    textposition="inside"
+)
+
+fig2.update_layout(
+    template="plotly_dark",
+    paper_bgcolor="black",
+    plot_bgcolor="black",
+    height=500,
+    title_font=dict(
+        color="aqua",
+        size=20
+    )
 )
 
 fig2.update_traces(
