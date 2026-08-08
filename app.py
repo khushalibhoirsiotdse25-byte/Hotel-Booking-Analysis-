@@ -93,28 +93,37 @@ df = load_data()
 
 
 st.markdown(
-    '<div class="main-title">Hotel Booking Interactive Dashboard</div>',
+    '<div class="main-title">🏨Hotel Booking Interactive Dashboard</div>',
     unsafe_allow_html=True
 )
 
 st.markdown(
-    '<div class="sub-title">Hotel Booking Data Analysis</div>',
+    '<div class="sub-title">📊Hotel Booking Data Analysis</div>',
     unsafe_allow_html=True
 )
 
 
 st.sidebar.title("🔎 Dashboard Filters")
 
-hotel_filter = st.sidebar.multiselect(
-    "Select Hotel",
-    options=df["hotel"].unique(),
-    default=df["hotel"].unique()
+hotel_options = {
+    "🏖️ Resort": "Resort",
+    "🏙️ City Hotel": "City Hotel"
+}
+
+selected_hotels = st.sidebar.multiselect(
+    "🏨 Select Hotel",
+    options=list(hotel_options.keys()),
+    default=list(hotel_options.keys())
 )
+
+hotel_filter = [
+    hotel_options[hotel]
+    for hotel in selected_hotels
+]
 
 filtered_df = df[
     df["hotel"].isin(hotel_filter)
 ]
-
 
 
 col1, col2, col3, col4 = st.columns(4)
