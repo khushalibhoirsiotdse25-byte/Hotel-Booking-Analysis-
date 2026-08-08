@@ -229,6 +229,33 @@ fig2.update_layout(
         font=dict(color="white")
     )
 )
+fig2.update_layout(
+    template="plotly_dark",
+    paper_bgcolor="black",
+    plot_bgcolor="black",
+    height=500,
+    title_font=dict(
+        color="aqua",
+        size=20
+    )
+)
+
+fig2.update_traces(
+    textinfo="percent",
+    textposition="inside"
+)
+
+fig2.update_layout(
+    template="plotly_dark",
+    paper_bgcolor="black",
+    plot_bgcolor="black",
+    height=500,
+    title_font=dict(
+        color="aqua",
+        size=20
+    )
+)
+
 
 
 
