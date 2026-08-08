@@ -171,7 +171,7 @@ fig1 = px.bar(
     country_data,
     x="country",
     y="Bookings",
-    title="Top 25 Countries by Bookings",
+    title="📈Top 25 Countries by Bookings",
     color="Bookings",
     color_continuous_scale="Viridis"
 )
@@ -206,7 +206,7 @@ fig2 = px.pie(
     country_pie,
     names="Country",
     values="Bookings",
-    title="Booking Distribution by Country",
+    title="🌍Booking Distribution by Country",
     color_discrete_sequence=px.colors.qualitative.Plotly
 )
 
@@ -306,7 +306,7 @@ fig3 = px.line(
     x="Month",
     y="Average_ADR",
     markers=True,
-    title="Average ADR Over Time"
+    title="📊Average ADR Over Time"
 )
 
 fig3.update_traces(
@@ -352,7 +352,7 @@ fig4 = px.histogram(
     booking_country,
     x="country",
     y="Bookings",
-    title="Booking Distribution",
+    title="📋Booking Distribution",
     color_discrete_sequence=["green"]
 )
 
@@ -391,7 +391,7 @@ fig5 = px.box(
     filtered_df,
     x="country",
     y="adr",
-    title="ADR Distribution Box Plot",
+    title="📉ADR Distribution Box Plot",
     color_discrete_sequence=["purple"]
 )
 
@@ -427,7 +427,7 @@ fig6 = px.scatter(
     color="country",
     size="total_guests",
     hover_name="country",
-    title="ADR vs Lead Time by Country",
+    title="🕛ADR vs Lead Time by Country",
     color_discrete_sequence=px.colors.qualitative.Vivid
 )
 
@@ -469,7 +469,7 @@ font-family:Times New Roman;
 font-size:16px;
 ">
 
-<b>Dashboard created using Pandas + Plotly + Streamlit</b>
+<b>🏨Dashboard created using Pandas + Plotly + Streamlit📊</b>
 
 </div>
 """, unsafe_allow_html=True)
