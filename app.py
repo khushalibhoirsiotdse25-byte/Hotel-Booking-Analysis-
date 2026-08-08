@@ -209,6 +209,21 @@ fig2 = px.pie(
     title="🌍Booking Distribution by Country",
     color_discrete_sequence=px.colors.qualitative.Plotly
 )
+fig2.update_traces(
+    textinfo="percent",
+    textposition="outside",
+    hovertemplate="<b>%{label}</b><br>Bookings: %{value}<br>Percentage: %{percent}<extra></extra>"
+)
+
+fig2.update_layout(
+    template="plotly_dark",
+    paper_bgcolor="black",
+    plot_bgcolor="black",
+    height=500,
+    title_font=dict(
+        color="aqua",
+        size=20
+    ),
 
 
     legend=dict(
