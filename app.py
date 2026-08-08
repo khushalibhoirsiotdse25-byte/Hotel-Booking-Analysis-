@@ -182,43 +182,43 @@ fig1.update_layout(
 )
 
 
-hotel_data = (
-    filtered_df["hotel"]
+country_pie = (
+    filtered_df["country"]
     .value_counts()
     .reset_index()
 )
 
-cancellation_data = (
-    filtered_df["is_canceled"]
-    .value_counts()
-    .reset_index()
-)
-
-cancellation_data.columns = [
-    "Status",
+country_pie.columns = [
+    "Country",
     "Bookings"
 ]
 
-cancellation_data["Status"] = cancellation_data["Status"].map({
-    0: "Not Cancelled",
-    1: "Cancelled"
-})
-
 fig2 = px.pie(
-    cancellation_data,
-    names="Status",
+    country_pie,
+    names="Country",
     values="Bookings",
-    title="Booking Cancellation Distribution",
-    color="Status",
-    color_discrete_map={
-        "Not Cancelled": "#00CC96",
-        "Cancelled": "#EF553B"
-    }
+    title="Booking Distribution by Country",
+    color_discrete_sequence=px.colors.qualitative.Plotly
 )
 
 fig2.update_traces(
-    textinfo="percent+label",
-    textposition="inside"
+    textinfo="percent",
+    textposition="outside",
+    hovertemplate="<b>%{label}</b><br>Bookings: %{value}<br>Percentage: %{percent}<extra></extra>"
+)
+
+fig2.update_layout(
+    template="plotly_dark",
+    paper_bgcolor="black",
+    plot_bgcolor="black",
+    height=500,
+    title_font=dict(
+        color="aqua",
+        size=20
+    ),
+    legend=dict(
+        font=dict(color="white")
+    )
 )
 
 fig2.update_layout(
