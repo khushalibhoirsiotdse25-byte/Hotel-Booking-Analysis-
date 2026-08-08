@@ -106,7 +106,7 @@ st.markdown(
 st.sidebar.title("🔎 Dashboard Filters")
 
 hotel_options = {
-    "🏖️ Resort": "Resort",
+    "🏖️ Resort Hotel": "Resort Hotel",
     "🏙️ City Hotel": "City Hotel"
 }
 
@@ -230,32 +230,6 @@ fig2.update_layout(
     )
 )
 
-fig2.update_layout(
-    template="plotly_dark",
-    paper_bgcolor="black",
-    plot_bgcolor="black",
-    height=500,
-    title_font=dict(
-        color="aqua",
-        size=20
-    )
-)
-
-fig2.update_traces(
-    textinfo="percent",
-    textposition="inside"
-)
-
-fig2.update_layout(
-    template="plotly_dark",
-    paper_bgcolor="black",
-    plot_bgcolor="black",
-    height=500,
-    title_font=dict(
-        color="aqua",
-        size=20
-    )
-)
 
 
 
