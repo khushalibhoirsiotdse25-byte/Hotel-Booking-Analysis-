@@ -130,13 +130,13 @@ col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.metric(
-        "Total Bookings",
+        "📋Total Bookings",
         f"{len(filtered_df):,}"
     )
 
 with col2:
     st.metric(
-        "Average ADR",
+        "💲Average ADR",
         f"{filtered_df['adr'].mean():.2f}"
     )
 
@@ -144,13 +144,13 @@ with col3:
     cancellation_rate = filtered_df["is_canceled"].mean() * 100
 
     st.metric(
-        "Cancellation Rate",
+        "✖️Cancellation Rate",
         f"{cancellation_rate:.2f}%"
     )
 
 with col4:
     st.metric(
-        "Average Lead Time",
+        "🕰️Average Lead Time",
         f"{filtered_df['lead_time'].mean():.1f} days"
     )
 
