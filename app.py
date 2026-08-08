@@ -43,17 +43,40 @@ div[data-testid="stMetric"] {
 </style>
 """, unsafe_allow_html=True)
 
-
-
 @st.cache_data
 def load_data():
 
     df = pd.read_csv("hotel_bookings.csv")
 
     # Handle missing values
-    df["children"] = df["children"].fillna(0)
+    df["children"] = pd.to_numeric(
+        df["children"],
+        errors="coerce"
+    ).fillna(0)
 
-    # Create total bookings column
+    # Convert numeric columns to proper numeric type
+    numeric_columns = [
+        "adults",
+        "babies",
+        "adr",
+        "lead_time",
+        "is_canceled"
+    ]
+
+    for col in numeric_columns:
+        df[col] = pd.to_numeric(
+            df[col],
+            errors="coerce"
+        )
+
+    # Fill missing numeric values
+    df["adults"] = df["adults"].fillna(0)
+    df["babies"] = df["babies"].fillna(0)
+    df["adr"] = df["adr"].fillna(0)
+    df["lead_time"] = df["lead_time"].fillna(0)
+    df["is_canceled"] = df["is_canceled"].fillna(0)
+
+    # Create total guests column
     df["total_guests"] = (
         df["adults"] +
         df["children"] +
@@ -61,6 +84,8 @@ def load_data():
     )
 
     return df
+
+
 
 
 df = load_data()
